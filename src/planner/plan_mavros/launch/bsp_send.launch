@@ -1,0 +1,33 @@
+<launch>
+  <!--飞行高度-->
+  <arg name="desire_h_" value="0.8"/>
+  <node pkg="plan_mavros" name="drop_mainner_node" type="drop_mainner_node" output="screen">
+  <param name="is_2D" value="true" type="bool"/>    
+  <param name="desire_h" value="$(arg desire_h_)" type="double"/>    
+  <!--投放高度-->
+  <param name="drop_pos_high" value="0.8" type="double"/> 
+  <!--串口号-->
+  <param name="arduino_port" value="/dev/ttyS0" type="string"/> 
+  <!--目标点个数-->
+  <param name="waypoint_num" value="5" type="int"/>   
+  <!--目标点坐标-->
+  <param name="waypoint0_x" value="7" type="double"/> 
+  <param name="waypoint0_y" value="0" type="double"/> 
+  <param name="waypoint0_z" value="$(arg desire_h_)" type="double"/> 
+  <param name="waypoint1_x" value="7.0" type="double"/> 
+  <param name="waypoint1_y" value="-10.0" type="double"/> 
+  <param name="waypoint1_z" value="$(arg desire_h_)" type="double"/> 
+  <param name="waypoint2_x" value="4.0" type="double"/> 
+  <param name="waypoint2_y" value="-10.5" type="double"/> 
+  <param name="waypoint2_z" value="$(arg desire_h_)" type="double"/> 
+<param name="waypoint3_x" value="1.0" type="double"/> 
+  <param name="waypoint3_y" value="-10.0" type="double"/> 
+  <param name="waypoint3_z" value="$(arg desire_h_)" type="double"/> 
+<param name="waypoint4_x" value="0.0" type="double"/> 
+  <param name="waypoint4_y" value="-2.7" type="double"/> 
+  <param name="waypoint4_z" value="$(arg desire_h_)" type="double"/> 
+  
+  <!--yolo相对坐标话题-->
+  <remap from="/yolo" to="/qua/pose"/>
+  </node>
+</launch>

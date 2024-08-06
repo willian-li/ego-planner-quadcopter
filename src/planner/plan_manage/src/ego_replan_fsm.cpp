@@ -216,8 +216,8 @@ namespace ego_planner
     cout << "Triggered!" << endl;
     // trigger_ = true;
     init_pt_ = odom_pos_;
-
-    Eigen::Vector3d end_wp(msg->pose.position.x, msg->pose.position.y, 1.0);
+  //接受3d目标
+    Eigen::Vector3d end_wp(msg->pose.position.x, msg->pose.position.y, msg->pose.position.z);
 
     planNextWaypoint(end_wp);
   }
